@@ -1,33 +1,36 @@
 version: 1
 project:
   id: ubcgif-2020-heagy-etal-seg
-  # title: TITLE
-  # description: DESCRIPTION
+  title: Machine learning for the classification of unexploded ordnance (UXO) from electromagnetic data
+  description: Presenting an approach for using convolutional neural networks to classify unexploded ordnance directly from time-domain electromagnetic data
   authors:
-    # - name: AUTHOR 1
-    #   email: EMAIL
-    #   corresponding: true
-    #   orcid: ORCID
-    #   affiliation:
-    #     id: ubc
-    #     name: Department of Earth, Ocean and Atmospheric Sciences, University of British Columbia, Vancouver, British Columbia
-    # - name: Lindsey J. Heagy
-    #   email: lheagy@eoas.ubc.ca
-    #   corresponding: true
-    #   orcid: 0000-0002-1551-5926
-    #   affiliation: ubc
-    # - name: Douglas W. Oldenburg
-    #   affiliation: ubc
-    #   email: doug@eos.ubc.ca
-    #   orcid: 0000-0002-4327-2124
+    - name: Lindsey J. Heagy
+      email: lheagy@eoas.ubc.ca
+      corresponding: true
+      orcid: 0000-0002-1551-5926
+      affiliation:
+        id: ubc
+        name: Department of Earth, Ocean and Atmospheric Sciences, University of British Columbia, Vancouver, British Columbia
+    - name: Douglas W. Oldenburg
+      email: doug@eos.ubc.ca
+      orcid: 0000-0002-4327-2124
+      affiliation: ubc
+    - name: Fernando Pérez
+      affiliation: ubc
+    #   email: 
+    #   orcid: 
+    - name: Laurens Beran
+      affiliation: ubc
+    #   email: 
+    #   orcid: 
   # banner: banner.png
   thumbnail: thumbnail.png
   # subject: Electromagnetics
   venue:
     # title: CONFERENCE NAME
     # url: CONFERENCE URL
-  # license: CC-BY-4.0
-  # open_access: true
+  license: CC-BY-4.0
+  open_access: true
   # doi: DOI
   abbreviations:
     # DC: direct current
