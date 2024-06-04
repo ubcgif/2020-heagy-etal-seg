@@ -26,8 +26,8 @@ project:
   venue:
     # title: CONFERENCE NAME
     # url: CONFERENCE URL
-  license: CC-BY-4.0
-  open_access: true
+  # license: CC-BY-4.0
+  # open_access: true
   # doi: DOI
   abbreviations:
     # DC: direct current
