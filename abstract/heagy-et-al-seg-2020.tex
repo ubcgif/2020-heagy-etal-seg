@@ -22,15 +22,15 @@
 \maketitle
 
 \begin{abstract}
-\vspace{-0.6cm}
+% \vspace{-0.6cm}
 
 Electromagnetic methods are widely used for the detection and classification of unexploded ordnance objects in former war zones or military training grounds. Typically, targets are classified using intrinsic parameters that are estimated via inversion of the observed data. In this work, we present an approach for using convolutional neural networks to classify unexploded ordnance directly from time-domain electromagnetic data. The outputs of the network are probabilities that the signal in a given spatial window is associated with an ordnance object, as well as a classification, which is simply the class with the largest probability. We demonstrate our approach with a synthetic example and show that the trained neural network can distinguish between small, medium, and large ordnance objects, as well as metallic clutter, and background response. These results illustrate the potential utility of machine learning for the interpretation of electromagnetic data collected over sites contaminated with ordnance.
 
 \end{abstract}
 
-\vspace{-0.45cm}
+% \vspace{-0.45cm}
 \section{Introduction and motivation}
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 
 Unexploded ordnance (UXO) are munitions that were armed, fired and remain unexploded. They are a hazard in countries that have had active wars or military training grounds. In the US alone, it is estimated that there are on the order of 10 million acres of land at over 1400 sites that are contaminated with UXO; the associated clean-up costs are in the 10s of billions \citep{Etter2003}. Improving classification to better identify items  which must be dug up, and distinguish them from clutter, which may safely be left in the ground, can significantly reduce these costs.
 
@@ -38,9 +38,9 @@ UXO items have a significant magnetic permeability and are electrically conducti
 
 To interpret the TDEM data and associate an observed signal with an ordnance item, a common approach is to conduct a series of inversions to estimate the location, orientation, and electromagnetic properties of the target and then match these properties to a library of known ordnance objects \cite{Andrews2011, Beran2013}. These parametric inversions are non-linear and prone to getting stuck in local minima. Given the success of neural networks for classification tasks, not only for images, but also for scientific data, the question we pose is: can we construct a neural network to classify ordnance objects directly from TDEM data without performing an inversion? Specifically of interest is to obtain the probability that an observed signal is associated with a given ordnance object.
 
-\vspace{-0.45cm}
+% \vspace{-0.45cm}
 \section{Modelling the electromagnetic response of a UXO}
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 
 Figure \ref{fig:uxo-coordinates} demonstrates the setup of a time-domain electromagnetic experiment to detect and classify an ordnance object. A transmitter generates a time-varying magnetic field $\mathbf{h}_T$ which induces eddy currents in the conductive, permeable ordnance object. These eddy currents produce a secondary magnetic field $\mathbf{h}_R$. At the receiver location, we measure the time-rate-of-change of the secondary magnetic flux ($\partial \mathbf{b}_R/\partial t = \mu_0 \partial \mathbf{h}_R/\partial t$).
 
@@ -55,9 +55,9 @@ The matrix $\mathbf{E}$ is an orthogonal matrix which rotates the coordinate sys
 \input{equations/uxo-L}
 These polarizabilities depend upon the physical properties of the ordnance object as well as its geometry. For forward modelling, we use the BTInvert Python code, provided by Black Tusk Geophysics.
 
-\vspace{-0.45cm}
+% \vspace{-0.45cm}
 \section{Survey and data}
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 
 We consider an UltraTEM towed array, with the geometry shown in figure \ref{fig:ultratem} \citep{Billings2018}. The system consists of 5 transmitters and 11 receivers which each measure 3 components of $\partial \mathbf{b}/\partial t$ at 27 time channels between 0.15 ms and 2.5 ms. A sounding collected at a single location of the towed array then consists of 165 time-series EM data ($5 \times 11 \times 3$).
 \input{figures/ultratem}
@@ -65,9 +65,9 @@ We consider an UltraTEM towed array, with the geometry shown in figure \ref{fig:
 A typical approach for working with these data would be to identify regions with anomalous signal, select a subset of data containing the anomaly, and then perform parametric inversions to estimate the location, orientation, and principal polarizabilities of an object. These polarizabilities are used in the classification step where they are matched with a library of known ordnance polarizabilities.
 
 
-\vspace{-0.45cm}
+% \vspace{-0.45cm}
 \section{Machine learning approach}
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 
 Rather than going through an inversion process and then classifying objects, our aim is to build a neural network that, given UltraTEM data, classifies the signal as being associated with an ordnance type, clutter, or background.
 
@@ -88,9 +88,9 @@ as the statement of the training problem. The label is encoded in $q_k \in {0, 1
 To construct the input features $\mathbf{x}$, we perform two normalization steps on the data, which are illustrated in Figure \ref{fig:data-normalizations}. In the first, we scale the data as a function of time-channel and multiply the data at each time by its time-channel (Figure \ref{fig:data-normalizations}b). The purpose of this step is to amplify the influence of late-time channels in the network while still preserving characteristics of the decay, which are indicative of the principal polarizabilities. In the second step, we scale all 165 inputs by the maximum amplitude across all data so that all inputs are in the range $[-1, 1]$ (Figure \ref{fig:data-normalizations}c) . The aim of this step is to force the network to learn spatial and temporal relationships within the data rather than simply the mean amplitude of signal associated with a given ordnance object, which is influenced both by the ordnance type and by the depth of burial.
 \input{figures/data-normalizations}
 
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 \subsection{Training}
-\vspace{-0.4cm}
+% \vspace{-0.4cm}
 
 We consider 5 classes: background, Small ISO, Medium ISO, Large ISO, and clutter. For each realization we randomly assign the class, noise level, and location and orientation of the target object. The range of parameters is shown in table \ref{tab:parameter-ranges}. The training set we generate consists of 8192 simulations and the test and validation sets each consist of 1024 realizations. For our noise model, we generate gaussian random noise of the form
 \input{equations/noise}
@@ -108,26 +108,26 @@ Near the along-line center of each target, our classifications are correct and t
 
 
 
-\vspace{-0.45cm}
+% \vspace{-0.45cm}
 \section{Synthetic example}
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 
 We now consider how this approach could be used to produce maps indicating the probability of a given ordnance item at a field site. We construct a synthetic example based on the data collected at a test plot in Australia. Figure \ref{fig:synthetic-test-plot} shows the survey lines (grey) and the location and depth of ordnance items and clutter. These locations and depths were drawn for a subset of the items seeded at the test plot.
 \input{figures/synthetic-test-plot}
 As was done in the previous section, we use a sliding 3m window and use the trained network to provide probabilities associated with each of the classes. These probabilities are gridded using the block reduce and spline operations included in \texttt{verde}  \citep{Uieda2018}. A map of the probabilities for each item are shown in Figure \ref{fig:synthetic-field-probs}. Overall, there is good agreement between where significant probabilities are assigned and the true spatial location of each target object. In Figure \ref{fig:synthetic-field-probs}b, there is a false-positive near (-15m, 5m) easting. We attribute this to ``edge effects'', as we observed in the previous section, due to the Large ISO. Similarly, we see halo-effects in Figure \ref{fig:synthetic-field-probs}d where moderate probabilities are assigned to the clutter class in the vicinity of ordnance objects.
 \input{figures/synthetic-field-probs}
 
-\vspace{-0.45cm}
+% \vspace{-0.45cm}
 \section{Discussion and conclusions}
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 
 The problem of classifying unexploded ordnance from electromagnetic data has several characteristics that make it a good candidate for the use of CNNs: we are able to construct synthetic labeled training sets from a library of known ordnance objects, there are labeled field data sets, and the data acquired from a given EM system (e.g. the UltraTEM) have a spatio-temporal structure that is well suited for the classification strengths of CNNs. The synthetic results we have shown demonstrate the potential for neural networks to be a useful interpretation tool to augment inversion-based approaches. The method we present could be used to prioritize areas where a cued sensor may be deployed to collect longer off-time data, or to provide an independent interpretation to complement an inversion result.
 
 This work is in early stages, and there are open questions with respect to constructing robust noise and clutter models, handling multi-object scenarios where two or more ordnance items are in close proximity, as well as addressing challenging geologic scenarios such as settings with magnetic soils which complicate the EM response. Additionally, we plan to further investigate strategies for designing the network architecture, input features, and the loss function (e.g. incorporating the asymmetry between the consequences of false positives and false negatives). The CNN architecture we presented is specific to the geometry of the UltraTEM system, however, we anticipate that this approach could be readily adapted to other multi-component EM systems.
 
-\vspace{-0.45cm}
+% \vspace{-0.45cm}
 \section{Acknowledgements}
-\vspace{-0.25cm}
+% \vspace{-0.25cm}
 
 The authors are grateful to David Sinex, Len Pasion, Lin-Ping Song, and Nicolas Lhomme for constructive conversations on the setup of this problem, for providing background information in the UltraTEM system, as well as support on the use of BTInvert. We are also grateful to Josh Bloom for conversations on neural network architectures.
 Thanks to Black Tusk Geophysics for providing data from the test plot which motivated the synthetic example used in this paper, as well as for providing access to BTInvert.

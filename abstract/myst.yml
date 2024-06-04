@@ -16,40 +16,39 @@ project:
       orcid: 0000-0002-4327-2124
       affiliation: ubc
     - name: Fernando Pérez
-      affiliation: ubc
+      affiliation: University of California Berkeley
     #   email: 
     #   orcid: 
     - name: Laurens Beran
-      affiliation: ubc
+      affiliation: Black Tusk Geophysics
     #   email: 
     #   orcid: 
-  # banner: banner.png
+  banner: banner.png
   thumbnail: thumbnail.png
-  # subject: Electromagnetics
+  subject: Electromagnetics
   venue:
-    # title: CONFERENCE NAME
-    # url: CONFERENCE URL
-  license: CC-BY-4.0
-  open_access: true
-  # doi: DOI
+    title: SEG International Exposition and 90th Annual Meeting
+    url: https://library.seg.org/doi/10.1190/segam2020-3428369.1
+  # license: CC-BY-4.0
+  # open_access: true
+  doi: 10.1190/segam2020-3428369.1
   abbreviations:
-    # DC: direct current
-    # EM: electromagnetics
-  # github:
-  # bibliography: []
-  # keywords:
-  #   - Controlled source electromagnetics (CSEM)
-  #   - Downhole methods
-  #   - Numerical modelling
-  #   - Electrical properties
-  #   - Magnetic properties
+    UXO: Unexploded ordnance
+    EM: electromagnetics
+    TDEM: time-domain electromagnetic
+  github: https://github.com/simpeg-research/heagy-et-al-2020-uxo-seg
+  bibliography: []
+  keywords:
+    - Electromagnetics
+    - Machine Learning
+    - Near Surface
 site:
   template: article-theme
   actions:
-    # - title: pdf
-    #   url: ARTICLE-NAME.pdf
-    #   static: true
-    # - title: slides
-    #   url: presentation/SLIDES-NAME.pdf
-    #   static: true
-  # domains: []
+    - title: pdf
+      url: heagy-et-al-2020-machine-learning-for-the-classification-of-unexploded-ordnance-(uxo)-from-electromagnetic-data.pdf
+      static: true
+    - title: slides
+      url: 2020-Heagy-et-al-UXO.pdf
+      static: true
+  domains: []
