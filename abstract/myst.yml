@@ -37,7 +37,7 @@ project:
     EM: electromagnetics
     TDEM: time-domain electromagnetic
   github: https://github.com/simpeg-research/heagy-et-al-2020-uxo-seg
-  bibliography: []
+  # bibliography: []
   keywords:
     - Electromagnetics
     - Machine Learning
@@ -51,4 +51,4 @@ site:
     - title: slides
       url: 2020-Heagy-et-al-UXO.pdf
       static: true
-  domains: []
+  # domains: []
