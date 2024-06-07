@@ -17,12 +17,12 @@ project:
       affiliation: ubc
     - name: Fernando Pérez
       affiliation: University of California Berkeley
-    #   email: 
-    #   orcid: 
+    #   email:
+    #   orcid:
     - name: Laurens Beran
       affiliation: Black Tusk Geophysics
-    #   email: 
-    #   orcid: 
+    #   email:
+    #   orcid:
   banner: banner.png
   thumbnail: thumbnail.png
   subject: Electromagnetics
@@ -48,7 +48,7 @@ site:
     - title: pdf
       url: heagy-et-al-2020-machine-learning-for-the-classification-of-unexploded-ordnance-(uxo)-from-electromagnetic-data.pdf
       static: true
-    - title: presentations
-      url: 2020-Heagy-et-al-UXO.pdf
+    - title: slides
+      url: presentation/2020-Heagy-et-al-UXO.pdf
       static: true
   # domains: []
