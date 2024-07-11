@@ -32,7 +32,7 @@ project:
   # license: CC-BY-4.0
   # open_access: true
   doi: 10.1190/segam2020-3428369.1
-  # date: DATE HERE
+  date: 2020/09/30 # date of publication
   abbreviations:
     UXO: Unexploded ordnance
     EM: electromagnetics
